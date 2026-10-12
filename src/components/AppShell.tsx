@@ -16,7 +16,14 @@ export function AppShell() {
         <p className="tenant-name">{name}</p>
         {user?.email ? <p className="muted">{user.email}</p> : null}
         {profile?.phone ? <p className="muted">{profile.phone}</p> : null}
-        <p className="unit-label">{unitLabel}</p>
+        {lease ? (
+          <>
+            <p className="unit-label">{lease.unit.property_name}</p>
+            <p className="unit-label">Unit {lease.unit.unit_number}</p>
+          </>
+        ) : (
+          <p className="unit-label">{unitLabel}</p>
+        )}
         <nav className="nav" aria-label="Portal">
           <NavLink to="/" end className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
             Overview
